@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trang chủ</title>
+  <style>
+    /* Đoạn mã CSS */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #1c1c1c;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      display: none; /* Sẽ hiển thị sau khi tải xong */
+    }
+    
+    h1 {
+      text-align: center;
+      color: #FF0000;
+      text-shadow: 2px 2px 4px #000000;
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    
+    .download-button {
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 10px;
+      background-color: #FF0000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    
+    .download-button:hover {
+      background-color: #990000;
+    }
+    
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #FF0000;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  <script>
+    // Đoạn mã JavaScript
+    window.addEventListener('DOMContentLoaded', function() {
+      var container = document.querySelector('.container');
+      var loadingOverlay = document.querySelector('.loading-overlay');
+
+      setTimeout(function() {
+        container.style.display = 'block';
+        loadingOverlay.style.display = 'none';
+      }, 2000); // Thay đổi số 2000 thành thời gian tải xuống thực tế của bạn (đơn vị: milliseconds)
+    });
+  </script>
+</head>
+<body>
+  <div class="loading-overlay">
+    <div class="loader"></div> <!-- Hiển thị hiệu ứng loading động -->
+  </div>
+  
+  <div class="container">
+    <h1>Đừng đợi!</h1>
+    <p>Hãy tải xuống phiên bản mới nhất của phần mềm và khám phá ngay bây giờ.</p>
+    <a class="download-button" href="https://bom.so/Checkpass-Armain">Tải xuống ngay!</a>
+  </div>
+</body>
+</html>
