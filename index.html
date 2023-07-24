@@ -18,7 +18,6 @@
       border-radius: 5px;
       padding: 20px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      display: none; /* Sẽ hiển thị sau khi tải xong */
     }
     
     h1 {
@@ -77,6 +76,16 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    
+    .visitor-counter {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      padding: 10px;
+      margin: 20px;
+      border-radius: 5px;
+    }
   </style>
   <script>
     // Đoạn mã JavaScript
@@ -88,7 +97,27 @@
         container.style.display = 'block';
         loadingOverlay.style.display = 'none';
       }, 2000); // Thay đổi số 2000 thành thời gian tải xuống thực tế của bạn (đơn vị: milliseconds)
+      
+      // Đếm số lượt truy cập
+      function incrementCounter() {
+        var counter = document.getElementById('counter');
+        var currentCount = parseInt(counter.innerText);
+        counter.innerText = currentCount + 1;
+      }
+
+      // Gọi hàm incrementCounter khi trang web được tải
+      incrementCounter();
     });
+
+    // Hàm chuyển hướng sau khi nhấn nút Tải xuống
+    function redirectToDownload() {
+      var loadingOverlay = document.querySelector('.loading-overlay');
+      
+      loadingOverlay.style.display = 'flex';
+      setTimeout(function() {
+        window.location.href = "https://bom.so/Checkpass-Armain"; // Thay đổi URL tương ứng với trang tải xuống của bạn
+      }, 2000); // Thời gian hiển thị hiệu ứng loading trước khi chuyển hướng (đơn vị: milliseconds)
+    }
   </script>
 </head>
 <body>
@@ -98,8 +127,13 @@
   
   <div class="container">
     <h1>Đừng đợi!</h1>
-    <p>Hãy tải xuống phiên bản mới nhất của phần mềm và khám phá ngay bây giờ.</p>
+    <p>Hãy tải xuống phiên bản mới nhất của phần mềm và khám ngay bây giờ.</p>
     <a class="download-button" href="https://bom.so/Checkpass-Armain">Tải xuống ngay!</a>
+    
+    <div class="visitor-counter">
+      <h2>Lượt truy cập:</h2>
+      <span id="counter">0</span>
+    </div>
   </div>
 </body>
 </html>
