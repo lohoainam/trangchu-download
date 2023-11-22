@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Price Candlestick Chart</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<body>
+
+<div id="bitcoinChart" style="width: 800px; height: 400px;"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Tạo dữ liệu ngẫu nhiên
+    function generateRandomBitcoinData(numPoints) {
+        var startTimestamp = new Date();
+        startTimestamp.setDate(startTimestamp.getDate() - numPoints);
+        var data = [];
+        for (var i = 0; i < numPoints; i++) {
+            var timestamp = startTimestamp.getTime() + i * 24 * 60 * 60 * 1000;
+            data.push([
+                timestamp,
+                Math.random() * 3000 + 30000,  // Giá mở cửa
+                Math.random() * 3000 + 30000,  // Giá cao nhất
+                Math.random() * 3000 + 30000,  // Giá thấp nhất
+                Math.random() * 3000 + 30000   // Giá đóng cửa
+            ]);
+        }
+        return data;
+    }
+
+    // Vẽ biểu đồ
+    Highcharts.stockChart('bitcoinChart', {
+        rangeSelector: {
+            selected: 1
+        },
+        title: {
+            text: 'Bitcoin Price Candlestick Chart'
+        },
+        series: [{
+            type: 'candlestick',
+            name: 'Bitcoin Price',
+            data: generateRandomBitcoinData(30),
+        }]
+    });
+});
+</script>
+
+</body>
+</html>
